@@ -15,13 +15,13 @@ namespace PartyApp.Test.TesonetApi
 		    (await servers.Fetch(new CancellationToken())).Should().NotBeEmpty();
 		}
 
-	    private static async Task<IServers> CreateSut()
-	    {
+        private static async Task<IServers> CreateSut()
+        {
 	        var servers = await new HttpTesonetApi().Login(
 	            new Credentials("tesonet", "partyanimal"),
 	            new CancellationToken());
 
 	        return servers;
-	    }
+        }
 	}
 }
