@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="PartyApp.Login.Controls.UsernameWatermarkTextBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignHeight="50"
+             d:DesignWidth="200">
+    <TextBox
+        Padding="7"
+        Foreground="#999999"
+        Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged}">
+        <TextBox.Style>
+            <Style TargetType="TextBox">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate
+                            TargetType="TextBox">
+                            <Border
+                                x:Name="border"
+                                CornerRadius="5"
+                                BorderBrush="#5B7B90"
+                                BorderThickness="1"
+                                Background="White"
+                                Cursor="IBeam"
+                                SnapsToDevicePixels="True">
+                                <Grid Margin="{TemplateBinding Padding}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Image
+                                        Grid.Column="0"
+                                        Source="/Login/Images/ico-username.png"
+                                        Width="14"
+                                        Height="16"
+                                        RenderOptions.BitmapScalingMode="HighQuality"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Left"
+                                        Margin="6, 0, 4, 0" />
+                                    <TextBlock
+                                        Grid.Column="1"
+                                        Foreground="#999999"
+                                        Margin="9, 0, 0, 0"
+                                        Focusable="False"
+                                        Text="Username"
+                                        Visibility="Hidden"
+                                        VerticalAlignment="Center"
+                                        x:Name="Watermark" />
+                                    <ScrollViewer
+                                        Grid.Column="1"
+                                        x:Name="PART_ContentHost"
+                                        Focusable="False"
+                                        HorizontalScrollBarVisibility="Hidden"
+                                        VerticalScrollBarVisibility="Hidden" />
+                                </Grid>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Opacity" TargetName="border" Value="0.5" />
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="BorderBrush" TargetName="border" Value="#58A1E9" />
+                                </Trigger>
+                                <Trigger Property="IsKeyboardFocused" Value="True">
+                                    <Setter Property="BorderBrush" TargetName="border" Value="#58A1E9" />
+                                </Trigger>
+                                <Trigger Property="Text" Value="">
+                                    <Setter Property="Visibility" TargetName="Watermark" Value="Visible" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </TextBox.Style>
+    </TextBox>
+</UserControl>

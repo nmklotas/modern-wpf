@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="PartyApp.Servers.ServersView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:controls="clr-namespace:PartyApp.Servers.Controls"
+             mc:Ignorable="d"
+             Background="White"
+             d:DesignHeight="300" d:DesignWidth="500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Image
+            Grid.Row="0"
+            Grid.Column="0"
+            RenderOptions.BitmapScalingMode="HighQuality"
+            Width="115"
+            Height="30"
+            Source="/Servers/Images/logotype-testio-small.png"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Margin="50, 40, 40, 40" />
+        <controls:LogoutButton 
+            Grid.Row="0"
+            Grid.Column="1"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            Margin="40" />
+        <controls:ServersListView
+            Grid.Row="1"
+            Grid.Column="0" />
+        <Image
+            Grid.Row="1"
+            Grid.Column="1"
+            RenderOptions.BitmapScalingMode="HighQuality"
+            Source="/Servers/Images/logotype-testio-side-panel.png"
+            Stretch="UniformToFill" />
+    </Grid>
+</UserControl>
