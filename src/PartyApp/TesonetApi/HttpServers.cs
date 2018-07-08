@@ -22,7 +22,8 @@ namespace PartyApp.TesonetApi
             {
                 return await "http://playground.tesonet.lt/v1/servers".
                     WithHeader("Authorization", $"Bearer {_authenticationToken}").
-                    WithHeader("accept", "application/json").GetAsync(cancellationToken).
+                    WithHeader("accept", "application/json").
+                    GetAsync(cancellationToken).
                     ReceiveJson<List<Server>>();
             }
             catch (FlurlHttpException ex)
