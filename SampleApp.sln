@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PartyApp", "src\PartyApp\PartyApp.csproj", "{14433006-AA63-477C-B95B-1993033B1144}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleApp", "src\PartyApp\SampleApp.csproj", "{14433006-AA63-477C-B95B-1993033B1144}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PartyApp.Test", "test\PartyApp.Test\PartyApp.Test.csproj", "{254582D2-4152-42E1-913A-16C930F8EC97}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleApp.Test", "test\PartyApp.Test\SampleApp.Test.csproj", "{254582D2-4152-42E1-913A-16C930F8EC97}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,5 +23,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FE53CC6C-E3F9-429B-9720-E84342F4A324}
 	EndGlobalSection
 EndGlobal

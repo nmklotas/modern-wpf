@@ -1,4 +1,4 @@
-﻿namespace PartyApp.Login
+﻿namespace SampleApp.Login
 {
     public partial class LoginView
     {

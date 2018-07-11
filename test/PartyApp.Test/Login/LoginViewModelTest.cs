@@ -2,12 +2,12 @@
 using System.Threading.Tasks;
 using Caliburn.Micro;
 using FluentAssertions;
-using PartyApp.Application;
-using PartyApp.Login;
-using PartyApp.TesonetApi;
+using SampleApp.Application;
+using SampleApp.Login;
+using SampleApp.TesonetApi;
 using Xunit;
 
-namespace PartyApp.Test.Login
+namespace SampleApp.Test.Login
 {
     public class LoginViewModelTest
     {

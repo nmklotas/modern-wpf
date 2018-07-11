@@ -1,6 +1,6 @@
-﻿using PartyApp.TesonetApi;
+﻿using SampleApp.TesonetApi;
 
-namespace PartyApp.Login
+namespace SampleApp.Login
 {
     public class LoginSucceededMessage
     {

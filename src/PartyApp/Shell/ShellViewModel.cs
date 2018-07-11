@@ -1,10 +1,10 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using Caliburn.Micro;
-using PartyApp.Login;
-using PartyApp.Servers;
+using SampleApp.Login;
+using SampleApp.Servers;
 
-namespace PartyApp.Shell
+namespace SampleApp.Shell
 {
     public class ShellViewModel : Conductor<Screen>.Collection.OneActive,
         IHandle<LoginSucceededMessage>,

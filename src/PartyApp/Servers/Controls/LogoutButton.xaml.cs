@@ -1,4 +1,4 @@
-﻿namespace PartyApp.Servers.Controls
+﻿namespace SampleApp.Servers.Controls
 {
     public partial class LogoutButton
     {

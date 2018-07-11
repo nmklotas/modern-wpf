@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace PartyApp.TesonetApi
+namespace SampleApp.TesonetApi
 {
     public class Credentials
     {

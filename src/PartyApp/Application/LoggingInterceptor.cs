@@ -1,7 +1,7 @@
 ﻿using Castle.DynamicProxy;
 using NLog;
 
-namespace PartyApp.Application
+namespace SampleApp.Application
 {
     public class LoggingInterceptor : IInterceptor
     {

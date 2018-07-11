@@ -1,10 +1,9 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using FluentAssertions;
-using PartyApp.TesonetApi;
+using SampleApp.TesonetApi;
 using Xunit;
 
-namespace PartyApp.Test.TesonetApi
+namespace SampleApp.Test.TesonetApi
 {
     public class HttpServersTest
     {
@@ -12,14 +11,14 @@ namespace PartyApp.Test.TesonetApi
         public async Task FetchesServers()
         {
             var servers = await CreateSut();
-            (await servers.Fetch(new CancellationToken())).Should().NotBeEmpty();
+            (await servers.Fetch(default)).Should().NotBeEmpty();
         }
 
         private static async Task<IServers> CreateSut()
         {
             var servers = await new HttpTesonetApi().Login(
                 new Credentials("tesonet", "partyanimal"),
-                new CancellationToken());
+                default);
 
             return servers;
         }

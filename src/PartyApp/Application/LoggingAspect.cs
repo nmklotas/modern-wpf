@@ -1,7 +1,7 @@
 ﻿using MethodBoundaryAspect.Fody.Attributes;
 using NLog;
 
-namespace PartyApp.Application
+namespace SampleApp.Application
 {
     public class LoggingAspect : OnMethodBoundaryAspect
     {

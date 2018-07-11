@@ -1,7 +1,7 @@
 ﻿using Caliburn.Micro;
-using PartyApp.TesonetApi;
+using SampleApp.TesonetApi;
 
-namespace PartyApp.Servers
+namespace SampleApp.Servers
 {
     public class ServerViewModel : PropertyChangedBase
     {

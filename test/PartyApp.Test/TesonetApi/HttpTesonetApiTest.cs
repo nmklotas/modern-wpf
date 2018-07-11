@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Threading;
 using System.Threading.Tasks;
 using FluentAssertions;
-using PartyApp.Application;
-using PartyApp.TesonetApi;
+using SampleApp.Application;
+using SampleApp.TesonetApi;
 using Xunit;
 
-namespace PartyApp.Test.TesonetApi
+namespace SampleApp.Test.TesonetApi
 {
 	public class HttpTesonetApiTest
 	{
@@ -14,7 +13,7 @@ namespace PartyApp.Test.TesonetApi
 	    public async Task ValidCredentialsReturnsServers()
 	    {
 	        var sut = new HttpTesonetApi();
-	        var servers = await sut.Login(new Credentials("tesonet", "partyanimal"), new CancellationToken());
+	        var servers = await sut.Login(new Credentials("tesonet", "partyanimal"), default);
 	        servers.Should().NotBeNull();
 	    }
 
@@ -22,7 +21,7 @@ namespace PartyApp.Test.TesonetApi
 	    public void InvalidCredentialThrows()
 	    {
 	        var sut = new HttpTesonetApi();
-	        Func<Task<IServers>> servers = () => sut.Login(new Credentials("test", "test"), new CancellationToken());
+	        Func<Task<IServers>> servers = () => sut.Login(new Credentials("test", "test"), default);
 	        servers.Should().Throw<AppException>().WithMessage("Invalid user name or password");
 	    }
     }

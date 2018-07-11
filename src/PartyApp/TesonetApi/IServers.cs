@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using PartyApp.Application;
+using SampleApp.Application;
 
-namespace PartyApp.TesonetApi
+namespace SampleApp.TesonetApi
 {
     public interface IServers
     {

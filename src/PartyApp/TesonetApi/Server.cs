@@ -1,4 +1,4 @@
-﻿namespace PartyApp.TesonetApi
+﻿namespace SampleApp.TesonetApi
 {
     public class Server
     {

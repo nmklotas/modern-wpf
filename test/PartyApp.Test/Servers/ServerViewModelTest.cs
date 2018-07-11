@@ -1,8 +1,8 @@
 ﻿using FluentAssertions;
-using PartyApp.Servers;
+using SampleApp.Servers;
 using Xunit;
 
-namespace PartyApp.Test.Servers
+namespace SampleApp.Test.Servers
 {
     public class ServerViewModelTest
     {

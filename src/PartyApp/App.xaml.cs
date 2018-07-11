@@ -1,4 +1,4 @@
-﻿namespace PartyApp
+﻿namespace SampleApp
 {
     public partial class App
     {

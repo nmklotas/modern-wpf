@@ -1,12 +1,12 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Caliburn.Micro;
-using PartyApp.Application;
-using PartyApp.TesonetApi;
-using static System.TimeSpan;
+using SampleApp.Application;
+using SampleApp.TesonetApi;
 
-namespace PartyApp.Servers
+namespace SampleApp.Servers
 {
     public class ServersViewModel : Screen
     {
@@ -46,7 +46,7 @@ namespace PartyApp.Servers
 
         private async Task<BindableCollection<ServerViewModel>> FetchServers()
         {
-            using (var cancellationTokenSource = new CancellationTokenSource(FromSeconds(30)))
+            using (var cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(30)))
             {
                 var servers = await _tesonetServers.Fetch(cancellationTokenSource.Token);
                 return new BindableCollection<ServerViewModel>(

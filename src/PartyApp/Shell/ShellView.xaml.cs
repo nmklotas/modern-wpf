@@ -1,4 +1,4 @@
-﻿namespace PartyApp.Shell
+﻿namespace SampleApp.Shell
 {
     public partial class ShellView
     {

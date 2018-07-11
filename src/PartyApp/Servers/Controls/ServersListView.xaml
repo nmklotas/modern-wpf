@@ -1,10 +1,10 @@
-﻿<UserControl x:Class="PartyApp.Servers.Controls.ServersListView"
+﻿<UserControl x:Class="SampleApp.Servers.Controls.ServersListView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:r="clr-namespace:PartyApp.Properties"
+             xmlns:r="clr-namespace:SampleApp.Properties"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:servers="clr-namespace:PartyApp.Servers"
+             xmlns:servers="clr-namespace:SampleApp.Servers"
              mc:Ignorable="d"
              d:DesignHeight="200" d:DesignWidth="400">
     <UserControl.Resources>

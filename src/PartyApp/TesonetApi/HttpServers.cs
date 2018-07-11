@@ -2,9 +2,9 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Flurl.Http;
-using PartyApp.Application;
+using SampleApp.Application;
 
-namespace PartyApp.TesonetApi
+namespace SampleApp.TesonetApi
 {
     public class HttpServers : IServers
     {

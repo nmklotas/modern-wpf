@@ -1,10 +1,10 @@
 ﻿using System.IO;
 using FluentAssertions;
 using Newtonsoft.Json;
-using PartyApp.TesonetApi;
+using SampleApp.TesonetApi;
 using Xunit;
 
-namespace PartyApp.Test.TesonetApi
+namespace SampleApp.Test.TesonetApi
 {
     public class CredentialsTest
     {

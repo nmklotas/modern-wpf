@@ -1,4 +1,4 @@
-﻿namespace PartyApp.Servers
+﻿namespace SampleApp.Servers
 {
     public class LogoutRequestedMessage
     {

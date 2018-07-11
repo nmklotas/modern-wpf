@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Windows;
 using Caliburn.Micro;
+using Castle.MicroKernel.Registration;
 using Castle.Windsor;
-using PartyApp.Application;
-using PartyApp.Login;
-using PartyApp.Servers;
-using PartyApp.Shell;
-using PartyApp.TesonetApi;
-using static Castle.MicroKernel.Registration.Component;
+using SampleApp.Application;
+using SampleApp.Login;
+using SampleApp.Servers;
+using SampleApp.Shell;
+using SampleApp.TesonetApi;
 
-namespace PartyApp
+namespace SampleApp
 {
     public class AppBootstrapper : BootstrapperBase
     {
@@ -22,13 +22,13 @@ namespace PartyApp
             base.Configure();
 
             _container = new WindsorContainer().
-                Register(For<ShellViewModel>()).
-                Register(For<ServersViewModel>()).
-                Register(For<LoginViewModel>()).
-                Register(For<LoggingInterceptor>()).
-                Register(For<ITesonetApi>().ImplementedBy<HttpTesonetApi>()).
-                Register(For<IWindowManager>().ImplementedBy<WindowManager>()).
-                Register(For<IEventAggregator>().ImplementedBy<EventAggregator>().Interceptors<LoggingInterceptor>());
+                Register(Component.For<ShellViewModel>()).
+                Register(Component.For<ServersViewModel>()).
+                Register(Component.For<LoginViewModel>()).
+                Register(Component.For<LoggingInterceptor>()).
+                Register(Component.For<ITesonetApi>().ImplementedBy<HttpTesonetApi>()).
+                Register(Component.For<IWindowManager>().ImplementedBy<WindowManager>()).
+                Register(Component.For<IEventAggregator>().ImplementedBy<EventAggregator>().Interceptors<LoggingInterceptor>());
         }
 
         protected override void OnStartup(object sender, StartupEventArgs e)

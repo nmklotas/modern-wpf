@@ -8,8 +8,8 @@
     <ProjectGuid>{254582D2-4152-42E1-913A-16C930F8EC97}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PartyApp.Test</RootNamespace>
-    <AssemblyName>PartyApp.Test</AssemblyName>
+    <RootNamespace>SampleApp.Test</RootNamespace>
+    <AssemblyName>SampleApp.Test</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -30,6 +30,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>7.1</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -112,9 +113,9 @@
     <Compile Include="Servers\ServersViewModelTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\PartyApp\PartyApp.csproj">
+    <ProjectReference Include="..\..\src\PartyApp\SampleApp.csproj">
       <Project>{14433006-aa63-477c-b95b-1993033b1144}</Project>
-      <Name>PartyApp</Name>
+      <Name>SampleApp</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace PartyApp.Login.Controls
+namespace SampleApp.Login.Controls
 {
     public static class PasswordBoxProperties
     {

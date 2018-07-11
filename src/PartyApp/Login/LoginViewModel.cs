@@ -1,10 +1,10 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using Caliburn.Micro;
-using PartyApp.Application;
-using PartyApp.TesonetApi;
-using static System.TimeSpan;
+using SampleApp.Application;
+using SampleApp.TesonetApi;
 
-namespace PartyApp.Login
+namespace SampleApp.Login
 {
     public class LoginViewModel : Screen
     {
@@ -55,7 +55,7 @@ namespace PartyApp.Login
 
             try
             {
-                using (var cancellationTokenSource = new CancellationTokenSource(FromSeconds(30)))
+                using (var cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(30)))
                 {
                     ChangeLoginInProgress(true);
 

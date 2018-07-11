@@ -4,9 +4,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using Flurl.Http;
 using Newtonsoft.Json;
-using PartyApp.Application;
+using SampleApp.Application;
 
-namespace PartyApp.TesonetApi
+namespace SampleApp.TesonetApi
 {
     public class HttpTesonetApi : ITesonetApi
     {
