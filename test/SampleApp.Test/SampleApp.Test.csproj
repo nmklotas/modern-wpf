@@ -113,7 +113,7 @@
     <Compile Include="Servers\ServersViewModelTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\PartyApp\SampleApp.csproj">
+    <ProjectReference Include="..\..\src\SampleApp\SampleApp.csproj">
       <Project>{14433006-aa63-477c-b95b-1993033b1144}</Project>
       <Name>SampleApp</Name>
     </ProjectReference>
