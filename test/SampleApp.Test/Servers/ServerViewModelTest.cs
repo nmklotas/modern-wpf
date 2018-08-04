@@ -8,21 +8,13 @@ namespace SampleApp.Test.Servers
     public class ServerViewModelTest
     {
         [Fact]
-        public void FormatsDistance()
+        public void Formats()
         {
-            new ServerViewModel(new Server("test", 100)).
-                Format().
-                Distance.
-                Should().Be("100 km");
-        }
+            var sut = new ServerViewModel(
+                new Server("test", 100)).Format();
 
-        [Fact]
-        public void FormatsName()
-        {
-            new ServerViewModel(new Server("test", 100)).
-                Format().
-                Name.
-                Should().Be("test");
+            sut.Name.Should().Be("test");
+            sut.Distance.Should().Be("100 km");
         }
     }
 }
