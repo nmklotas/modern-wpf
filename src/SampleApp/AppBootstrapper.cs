@@ -7,17 +7,28 @@ using SampleApp.Login;
 using SampleApp.Servers;
 using SampleApp.Shell;
 using SampleApp.TesonetApi;
+using Serilog;
 using static Castle.MicroKernel.Registration.Component;
 
 namespace SampleApp
 {
     public class AppBootstrapper : BootstrapperBase
     {
-        private readonly Lazy<IWindsorContainer> _container = new Lazy<IWindsorContainer>(CreateContainer);
+        private readonly Lazy<IWindsorContainer> _container;
 
         public AppBootstrapper()
         {
             Initialize();
+            _container = new Lazy<IWindsorContainer>(CreateContainer);
+        }
+
+        protected override void Configure()
+        {
+            base.Configure();
+            Log.Logger = new LoggerConfiguration().
+                MinimumLevel.Information().
+                WriteTo.File("log.txt").
+                CreateLogger();
         }
 
         protected override void OnStartup(object sender, StartupEventArgs e)

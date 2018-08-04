@@ -1,5 +1,5 @@
 ﻿using Castle.DynamicProxy;
-using NLog;
+using Serilog;
 
 namespace SampleApp.Application
 {
@@ -7,8 +7,7 @@ namespace SampleApp.Application
     {
         public void Intercept(IInvocation invocation)
         {
-            var logger = LogManager.GetCurrentClassLogger(invocation.TargetType);
-            logger.Info($"Entering {invocation.Method.Name}({string.Join(", ", invocation.Arguments)})");
+            Log.Information($"Entering {invocation.Method.Name}({string.Join(", ", invocation.Arguments)})");
             invocation.Proceed();
         }
     }

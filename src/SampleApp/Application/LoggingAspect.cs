@@ -1,5 +1,5 @@
 ﻿using MethodBoundaryAspect.Fody.Attributes;
-using NLog;
+using Serilog;
 
 namespace SampleApp.Application
 {
@@ -8,24 +8,19 @@ namespace SampleApp.Application
         public override void OnEntry(MethodExecutionArgs arg)
         {
             base.OnEntry(arg);
-            GetLogger(arg).Info($"Entering {arg.Method.Name}({string.Join(", ", arg.Arguments)})");
+            Log.Information($"Entering {arg.Method.Name}({string.Join(", ", arg.Arguments)})");
         }
 
         public override void OnException(MethodExecutionArgs arg)
         {
             base.OnException(arg);
-            GetLogger(arg).Error($"Exception: {arg.Exception}");
+            Log.Error($"Exception: {arg.Exception}");
         }
 
         public override void OnExit(MethodExecutionArgs arg)
         {
             base.OnExit(arg);
-            GetLogger(arg).Info($"Exiting {arg.Method.Name}. Return value: {arg.ReturnValue}");
-        }
-
-        private static Logger GetLogger(MethodExecutionArgs arg)
-        {
-            return LogManager.GetCurrentClassLogger(arg.Method.DeclaringType);
+            Log.Information($"Exiting {arg.Method.Name}. Return value: {arg.ReturnValue}");
         }
     }
 }
