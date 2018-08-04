@@ -26,7 +26,7 @@ namespace SampleApp.Servers
         {
             return new ServerViewModel(
                 _server, 
-                Name, 
+                _server.Name, 
                 $"{_server.Distance} km");
         }
     }

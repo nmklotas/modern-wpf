@@ -15,7 +15,9 @@ namespace SampleApp.Test.Servers
         [Fact]
         public void ShowsServersOnActivate()
         {
-            var sut = new ServersViewModel(new FakeServers(), new EventAggregator());
+            var sut = new ServersViewModel(
+                new FakeServers(), 
+                new EventAggregator());
 
             sut.As<IActivate>().Activate();
 

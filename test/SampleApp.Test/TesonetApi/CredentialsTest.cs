@@ -20,9 +20,7 @@ namespace SampleApp.Test.TesonetApi
         public void ConvertsToJson()
         {
             var sut = new Credentials("testUser", "testPassword");
-            var stringWritter = new StringWriter();
-            sut.ToJSON(new JsonTextWriter(stringWritter));
-            stringWritter.ToString().Should().Be("{\"username\":\"testUser\",\"password\":\"testPassword\"}");
+            sut.ToJObject().ToString(Formatting.None).Should().Be("{\"username\":\"testUser\",\"password\":\"testPassword\"}");
         }
     }
 }

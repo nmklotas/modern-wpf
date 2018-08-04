@@ -24,7 +24,7 @@ namespace SampleApp.TesonetApi
                     WithHeader("Authorization", $"Bearer {_authenticationToken}").
                     WithHeader("accept", "application/json").
                     GetAsync(cancellationToken).
-                    ReceiveJson<List<Server>>();
+                    ReceiveJson<Server[]>();
             }
             catch (FlurlHttpException ex)
             {

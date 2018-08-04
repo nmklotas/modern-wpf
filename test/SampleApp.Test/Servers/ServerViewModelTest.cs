@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using SampleApp.Servers;
+using SampleApp.TesonetApi;
 using Xunit;
 
 namespace SampleApp.Test.Servers
@@ -9,10 +10,19 @@ namespace SampleApp.Test.Servers
         [Fact]
         public void FormatsDistance()
         {
-            new ServerViewModel("test", 100).
-                FormatDistance().
+            new ServerViewModel(new Server("test", 100)).
+                Format().
                 Distance.
                 Should().Be("100 km");
+        }
+
+        [Fact]
+        public void FormatsName()
+        {
+            new ServerViewModel(new Server("test", 100)).
+                Format().
+                Name.
+                Should().Be("test");
         }
     }
 }

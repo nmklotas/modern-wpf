@@ -1,9 +1,7 @@
-﻿using System.IO;
-using System.Net;
+﻿using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using Flurl.Http;
-using Newtonsoft.Json;
 using SampleApp.Application;
 
 namespace SampleApp.TesonetApi
@@ -15,16 +13,12 @@ namespace SampleApp.TesonetApi
         {
             try
             {
-                using (var loginResponse = await "http://playground.tesonet.lt/v1/tokens".
+                var authenticationToken = await "http://playground.tesonet.lt/v1/tokens".
                     WithHeader("Content-Type", "application/json").
-                    PostStringAsync(SerializeCredentials(credentials), cancellationToken))
-                {
-                    var authenticationToken = JsonConvert.DeserializeAnonymousType(
-                        await loginResponse.Content.ReadAsStringAsync(),
-                        new {Token = ""}).Token;
+                    PostJsonAsync(credentials.ToJObject(), cancellationToken).
+                    ReceiveJson<AuthenticationToken>();
 
-                    return new HttpServers(authenticationToken);
-                }
+                return new HttpServers(authenticationToken.Token);
             }
             catch (FlurlHttpException ex)
             {
@@ -32,18 +26,16 @@ namespace SampleApp.TesonetApi
             }
         }
 
-        private static string SerializeCredentials(Credentials credentials)
-        {
-            var stringWritter = new StringWriter();
-            credentials.ToJSON(new JsonTextWriter(stringWritter));
-            return stringWritter.ToString();
-        }
-
         private static string ResolveError(FlurlHttpException ex)
         {
             return ex.Call.Response.StatusCode == HttpStatusCode.Unauthorized
                 ? "Invalid user name or password"
                 : "Failed to authenticate";
+        }
+
+        private class AuthenticationToken
+        {
+            public string Token { get; set; }
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using Newtonsoft.Json.Linq;
 
 namespace SampleApp.TesonetApi
 {
@@ -26,14 +26,11 @@ namespace SampleApp.TesonetApi
             return false;
         }
 
-        public void ToJSON(JsonWriter writer)
+        public JObject ToJObject()
         {
-            writer.WriteStartObject();
-            writer.WritePropertyName("username");
-            writer.WriteValue(_username);
-            writer.WritePropertyName("password");
-            writer.WriteValue(_password);
-            writer.WriteEndObject();
+            return new JObject(
+                new JProperty("username", _username),
+                new JProperty("password", _password));
         }
     }
 }
