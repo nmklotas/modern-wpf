@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Caliburn.Micro;
@@ -12,7 +13,7 @@ namespace SampleApp.Servers
     {
         private readonly IServers _tesonetServers;
         private readonly IEventAggregator _eventAggregator;
-        private BindableCollection<ServerViewModel> _servers = new BindableCollection<ServerViewModel>();
+        private List<ServerViewModel> _servers = new List<ServerViewModel>();
 
         public ServersViewModel(IServers servers, IEventAggregator eventAggregator)
         {
@@ -20,7 +21,7 @@ namespace SampleApp.Servers
             _eventAggregator = eventAggregator;
         }
 
-        public BindableCollection<ServerViewModel> Servers
+        public List<ServerViewModel> Servers
         {
             get => _servers;
             private set => Set(ref _servers, value);
@@ -44,15 +45,14 @@ namespace SampleApp.Servers
             }
         }
 
-        private async Task<BindableCollection<ServerViewModel>> FetchServers()
+        private async Task<List<ServerViewModel>> FetchServers()
         {
             using (var cancellationSource = new CancellationTokenSource(FromSeconds(30)))
             {
-                var servers =(await _tesonetServers.Fetch(cancellationSource.Token)).
+                return (await _tesonetServers.Fetch(cancellationSource.Token)).
                     Select(s => new ServerViewModel(s).Format()).
-                    OrderBy(s => s.Name);
-
-                return new BindableCollection<ServerViewModel>(servers);
+                    OrderBy(s => s.Name).
+                    ToList();
             }
         }
     }
