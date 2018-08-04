@@ -1,10 +1,10 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Caliburn.Micro;
 using SampleApp.Application;
 using SampleApp.TesonetApi;
+using static System.TimeSpan;
 
 namespace SampleApp.Servers
 {
@@ -46,11 +46,13 @@ namespace SampleApp.Servers
 
         private async Task<BindableCollection<ServerViewModel>> FetchServers()
         {
-            using (var cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(30)))
+            using (var cancellationSource = new CancellationTokenSource(FromSeconds(30)))
             {
-                var servers = await _tesonetServers.Fetch(cancellationTokenSource.Token);
-                return new BindableCollection<ServerViewModel>(
-                    servers.Select(s => new ServerViewModel(s).FormatDistance()).OrderBy(s => s.Name));
+                var servers =(await _tesonetServers.Fetch(cancellationSource.Token)).
+                    Select(s => new ServerViewModel(s).Format()).
+                    OrderBy(s => s.Name);
+
+                return new BindableCollection<ServerViewModel>(servers);
             }
         }
     }

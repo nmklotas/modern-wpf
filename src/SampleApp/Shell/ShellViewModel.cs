@@ -19,13 +19,6 @@ namespace SampleApp.Shell
             _eventAggregator = eventAggregator;
         }
 
-        protected override void OnInitialize()
-        {
-            base.OnInitialize();
-            _eventAggregator.SubscribeOnPublishedThread(this);
-            ActivateItem(_loginViewModel);
-        }
-
         public async Task HandleAsync(LoginSucceededMessage message, CancellationToken cancellationToken)
         {
             ActivateItem(new ServersViewModel(message.Servers, _eventAggregator));
@@ -33,6 +26,13 @@ namespace SampleApp.Shell
 
         public async Task HandleAsync(LogoutRequestedMessage message, CancellationToken cancellationToken)
         {
+            ActivateItem(_loginViewModel);
+        }
+
+        protected override void OnInitialize()
+        {
+            base.OnInitialize();
+            _eventAggregator.SubscribeOnPublishedThread(this);
             ActivateItem(_loginViewModel);
         }
     }

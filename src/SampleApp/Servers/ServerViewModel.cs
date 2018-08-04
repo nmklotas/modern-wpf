@@ -1,32 +1,33 @@
-﻿using Caliburn.Micro;
-using SampleApp.TesonetApi;
+﻿using SampleApp.TesonetApi;
 
 namespace SampleApp.Servers
 {
-    public class ServerViewModel : PropertyChangedBase
+    public class ServerViewModel
     {
-        private readonly double _distance;
+        private readonly Server _server;
 
-        public ServerViewModel(Server server) : this(server.Name, server.Distance)
+        public ServerViewModel(Server server) : this(server, "", "")
         {
+            
         }
 
-        public ServerViewModel(string name, double distance)
+        private ServerViewModel(Server server, string name, string distance)
         {
+            _server = server;
             Name = name;
-            _distance = distance;
+            Distance = distance;
         }
 
         public string Name { get; }
 
-        public string Distance { get; private set; }
+        public string Distance { get; }
 
-        public ServerViewModel FormatDistance()
+        public ServerViewModel Format()
         {
-            return new ServerViewModel(Name, _distance)
-            {
-                Distance = $"{_distance} km"
-            };
+            return new ServerViewModel(
+                _server, 
+                Name, 
+                $"{_server.Distance} km");
         }
     }
 }

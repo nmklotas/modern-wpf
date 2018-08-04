@@ -1,8 +1,8 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 using Caliburn.Micro;
 using SampleApp.Application;
 using SampleApp.TesonetApi;
+using static System.TimeSpan;
 
 namespace SampleApp.Login
 {
@@ -36,13 +36,13 @@ namespace SampleApp.Login
         public string Error
         {
             get => _error;
-            set => Set(ref _error, value);
+            private set => Set(ref _error, value);
         }
 
         public bool LoginInProgress
         {
             get => _loginInProgress;
-            set => Set(ref _loginInProgress, value);
+            private set => Set(ref _loginInProgress, value);
         }
 
         public bool CanLogin => !LoginInProgress;
@@ -55,13 +55,13 @@ namespace SampleApp.Login
 
             try
             {
-                using (var cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(30)))
+                using (var cancellationSource = new CancellationTokenSource(FromSeconds(30)))
                 {
                     ChangeLoginInProgress(true);
 
                     var servers = await _tesonetApi.Login(
                         credentials,
-                        cancellationTokenSource.Token);
+                        cancellationSource.Token);
 
                     await _eventAggregator.PublishOnUIThreadAsync(new LoginSucceededMessage(servers));
                 }

@@ -1,34 +1,23 @@
 ﻿using System;
 using System.Windows;
 using Caliburn.Micro;
-using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using SampleApp.Application;
 using SampleApp.Login;
 using SampleApp.Servers;
 using SampleApp.Shell;
 using SampleApp.TesonetApi;
+using static Castle.MicroKernel.Registration.Component;
 
 namespace SampleApp
 {
     public class AppBootstrapper : BootstrapperBase
     {
-        private IWindsorContainer _container;
+        private readonly Lazy<IWindsorContainer> _container = new Lazy<IWindsorContainer>(CreateContainer);
 
-        public AppBootstrapper() => Initialize();
-
-        protected override void Configure()
+        public AppBootstrapper()
         {
-            base.Configure();
-
-            _container = new WindsorContainer().
-                Register(Component.For<ShellViewModel>()).
-                Register(Component.For<ServersViewModel>()).
-                Register(Component.For<LoginViewModel>()).
-                Register(Component.For<LoggingInterceptor>()).
-                Register(Component.For<ITesonetApi>().ImplementedBy<HttpTesonetApi>()).
-                Register(Component.For<IWindowManager>().ImplementedBy<WindowManager>()).
-                Register(Component.For<IEventAggregator>().ImplementedBy<EventAggregator>().Interceptors<LoggingInterceptor>());
+            Initialize();
         }
 
         protected override void OnStartup(object sender, StartupEventArgs e)
@@ -39,7 +28,19 @@ namespace SampleApp
 
         protected override object GetInstance(Type service, string key)
         {
-            return _container.Resolve(service);
+            return _container.Value.Resolve(service);
+        }
+
+        private static IWindsorContainer CreateContainer()
+        {
+            return new WindsorContainer().
+                Register(For<ShellViewModel>()).
+                Register(For<ServersViewModel>()).
+                Register(For<LoginViewModel>()).
+                Register(For<LoggingInterceptor>()).
+                Register(For<ITesonetApi>().ImplementedBy<HttpTesonetApi>()).
+                Register(For<IWindowManager>().ImplementedBy<WindowManager>()).
+                Register(For<IEventAggregator>().ImplementedBy<EventAggregator>().Interceptors<LoggingInterceptor>());
         }
     }
 }
