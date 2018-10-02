@@ -22,7 +22,7 @@ namespace SampleApp.Servers
 
         public string Distance { get; }
 
-        public ServerViewModel Format()
+        public ServerViewModel SuffixDistanceUnit()
         {
             return new ServerViewModel(
                 _server, 
